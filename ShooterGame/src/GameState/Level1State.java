@@ -6,7 +6,7 @@ import Entity.Player;
 import Main.GamePanel;
 import TileMap.*;
 
-public class Level1State extends GameState {
+/*public class Level1State extends GameState {
 
 	private TileMap tileMap;
 	private Background bg;//background
@@ -59,5 +59,5 @@ public class Level1State extends GameState {
 		if(k == KeyEvent.VK_D) player.setRight(false);
 		if(k == KeyEvent.VK_W) player.setUp(false);
 		if(k == KeyEvent.VK_S) player.setDown(false);
-	}
+	}*/
 }

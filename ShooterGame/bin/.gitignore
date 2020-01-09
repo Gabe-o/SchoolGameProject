@@ -1,9 +1,10 @@
 /ArenaFloor.jpg
 /Entity/
+/GameState/
+/Main/
+/TileMap/
+/Weapons/
 /grasstileset.gif
 /level1-1.map
 /playersprites.gif
 /shopbg.jpg
-/GameState/
-/Main/
-/TileMap/

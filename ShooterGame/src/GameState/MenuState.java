@@ -5,6 +5,8 @@ import TileMap.Background;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
+import Main.GamePanel;
+
 public class MenuState extends GameState{
 	
 	private Background bg;//Background
@@ -23,13 +25,12 @@ public class MenuState extends GameState{
 		
 		try {
 			
-			bg = new Background("/Images/menubg.gif");
-			bg.setVector(-0.1, 0);
+			bg = new Background("/ArenaFloor.jpg");
 			
-			titleColor = new Color(128, 0, 0);
-			titleFont = new Font ("Century Gothic", Font.PLAIN, 28);
+			titleColor = new Color(255, 0, 0);
+			titleFont = new Font ("Century Gothic", Font.PLAIN, 56);
 			
-			font = new Font ("Arial", Font.PLAIN, 12);
+			font = new Font ("Arial", Font.PLAIN, 24);
 			
 		}
 		catch(Exception e) {
@@ -38,9 +39,7 @@ public class MenuState extends GameState{
 	}
 	
 	public void init() {}
-	public void update() {
-		bg.update();
-	}
+	public void update() {}
 	public void draw(Graphics2D g) {
 		
 		//draw bg
@@ -49,18 +48,18 @@ public class MenuState extends GameState{
 		//draw title
 		g.setColor(titleColor);
 		g.setFont(titleFont);
-		g.drawString("SKREEEEE", 80, 70);
+		g.drawString("Game", GamePanel.WIDTH/2-75, GamePanel.HEIGHT/4);
 		
 		//draw menu options
 		g.setFont(font);
 		for (int i = 0; i < options.length;i++) {
 			if (i == currentChoice) {
-				g.setColor(Color.BLACK);
+				g.setColor(Color.WHITE);
 			}
 			else {
 				g.setColor(Color.RED);
 			}
-			g.drawString(options[i], 145, 140 + i * 15);
+			g.drawString(options[i], GamePanel.WIDTH/2-28, 160 + i * 30);
 		}
 	}
 	

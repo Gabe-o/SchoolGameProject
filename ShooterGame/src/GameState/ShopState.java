@@ -28,11 +28,7 @@ public ShopState(GameStateManager gsm) {
 		this.gsm = gsm;
 		
 		try {
-			
-			bg = new Background("/Images/shopbg.jpg");
-	
-			
-		
+			bg = new Background("/shopbg.jpg");
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -70,8 +66,8 @@ public ShopState(GameStateManager gsm) {
 	
 
 	public void init() {}
+	
 	public void update() {
-		bg.update();
 	}
 
 	public void draw(Graphics2D g) {

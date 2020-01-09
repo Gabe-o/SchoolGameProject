@@ -24,6 +24,7 @@ public abstract class MapObject {
 	//dimensions
 	protected int width;
 	protected int height;
+	
 	//collision box
 	protected int cwidth;
 	protected int cheight;
@@ -40,12 +41,6 @@ public abstract class MapObject {
 	protected boolean bottomLeft;
 	protected boolean bottomRight;
 	
-	//animation
-	protected Animation animation;
-	protected int currentAction;
-	protected int previousAction;
-	protected boolean facingRight;
-	
 	protected boolean left;
 	protected boolean right;
 	protected boolean up;
@@ -61,11 +56,7 @@ public abstract class MapObject {
 		tileMap = tm;
 		tileSize = tm.getTileSize();
 	}
-	public boolean intersects (MapObject o) {
-		Rectangle r1 = getRectangle(); 
-		Rectangle r2 = o.getRectangle();
-		return r1.intersects(r2);
-	}
+	
 	public Rectangle getRectangle() {
 		return new Rectangle((int)x-cwidth,(int)y-cheight,cwidth,cheight);
 	}
@@ -144,14 +135,17 @@ public abstract class MapObject {
 		this.x = x;
 		this.y = y;
 	}
+	
 	public void setVector (double dx, double dy) {
 		this.dx = dx;
 		this.dy = dy;
 	}
+	
 	public void setMapPosition () {
 		xmap = tileMap.getx();
 		ymap = tileMap.gety();
 	}
+	
 	public void setLeft(boolean b) {left = b;}
 	public void setRight(boolean b) {right = b;}
 	public void setUp(boolean b) {up = b;}

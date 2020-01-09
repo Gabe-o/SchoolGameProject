@@ -1,7 +1,5 @@
 package GameState;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.KeyEvent;
 
 import Entity.Player;
@@ -23,18 +21,17 @@ public class Level1State extends GameState {
 
 	public void init() {
 		tileMap = new TileMap(30);
-		tileMap.loadTiles("/Images/grasstileset.gif");
-		tileMap.loadMap("/Images/level1-1.map");
+		tileMap.loadTiles("/grasstileset.gif");
+		tileMap.loadMap("/level1-1.map");
 		tileMap.setPosition(0,  0);
 		
-		bg = new Background("/Images/Level1Floor.jpg");
+		bg = new Background("/ArenaFloor.jpg");
 		
 		player = new Player(tileMap);
 		player.setPosition(100, 100);
 	}
 
 	public void update() {
-		bg.update();
 		player.update();
 		tileMap.setPosition(GamePanel.WIDTH / 2 - player.getx(), GamePanel.HEIGHT / 2 - player.gety());
 	}
@@ -51,16 +48,16 @@ public class Level1State extends GameState {
 	}
 
 	public void keyPressed(int k) {
-		if(k == KeyEvent.VK_LEFT) player.setLeft(true);
-		if(k == KeyEvent.VK_RIGHT) player.setRight(true);
-		if(k == KeyEvent.VK_UP) player.setUp(true);
-		if(k == KeyEvent.VK_DOWN) player.setDown(true);
+		if(k == KeyEvent.VK_A) player.setLeft(true);
+		if(k == KeyEvent.VK_D) player.setRight(true);
+		if(k == KeyEvent.VK_W) player.setUp(true);
+		if(k == KeyEvent.VK_S) player.setDown(true);
 	}
 
 	public void keyReleased(int k) {
-		if(k == KeyEvent.VK_LEFT) player.setLeft(false);
-		if(k == KeyEvent.VK_RIGHT) player.setRight(false);
-		if(k == KeyEvent.VK_UP) player.setUp(false);
-		if(k == KeyEvent.VK_DOWN) player.setDown(false);
+		if(k == KeyEvent.VK_A) player.setLeft(false);
+		if(k == KeyEvent.VK_D) player.setRight(false);
+		if(k == KeyEvent.VK_W) player.setUp(false);
+		if(k == KeyEvent.VK_S) player.setDown(false);
 	}
 }

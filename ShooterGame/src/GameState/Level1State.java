@@ -6,9 +6,9 @@ import Entity.Player;
 import Main.GamePanel;
 import TileMap.*;
 
-/*public class Level1State extends GameState {
+public class Level1State extends GameState {
 
-	private TileMap tileMap;
+	private TileMap tileMap = new TileMap("/Level1Map.png");
 	private Background bg;//background
 	
 	private Player player;
@@ -20,31 +20,28 @@ import TileMap.*;
 	}
 
 	public void init() {
-		tileMap = new TileMap(30);
-		tileMap.loadTiles("/grasstileset.gif");
-		tileMap.loadMap("/level1-1.map");
-		tileMap.setPosition(0,  0);
+		tileMap.LoadLevel("/Level1Map.png");
 		
 		bg = new Background("/ArenaFloor.jpg");
 		
-		player = new Player(tileMap);
-		player.setPosition(100, 100);
+		//player = new Player();
+		//player.setPosition(100, 100);
 	}
 
 	public void update() {
-		player.update();
-		tileMap.setPosition(GamePanel.WIDTH / 2 - player.getx(), GamePanel.HEIGHT / 2 - player.gety());
+		//player.update();
 	}
 
 	public void draw(java.awt.Graphics2D g) {
+		
 		//draw bg
 		bg.draw(g);
 		
 		//draw tilemap
 		tileMap.draw(g);
-		
+				
 		//draw player
-		player.draw(g);
+		//player.draw(g);
 	}
 
 	public void keyPressed(int k) {
@@ -59,5 +56,5 @@ import TileMap.*;
 		if(k == KeyEvent.VK_D) player.setRight(false);
 		if(k == KeyEvent.VK_W) player.setUp(false);
 		if(k == KeyEvent.VK_S) player.setDown(false);
-	}*/
+	}
 }

@@ -52,9 +52,8 @@ public abstract class MapObject {
 	protected double stopSpeed;
 	
 	//constructor
-	public MapObject (TileMap tm) {
-		tileMap = tm;
-		tileSize = tm.getTileSize();
+	public MapObject () {
+		//tileMap = tm;
 	}
 	
 	public Rectangle getRectangle() {
@@ -62,19 +61,7 @@ public abstract class MapObject {
 	}
 	
 	public void calculateCorners(double x, double y) {
-		int leftTile = (int) (x - cwidth / 2) / tileSize;
-		int rightTile = (int) (x + cwidth / 2 - 1) / tileSize;
-		int topTile = (int) (y - cheight / 2) / tileSize;
-		int bottomTile = (int) (y + cheight / 2 - 1) / tileSize;
 	
-		int tl = tileMap.getType(topTile, leftTile);
-		int tr = tileMap.getType(bottomTile, rightTile);
-		int bl = tileMap.getType(topTile, leftTile);
-		int br = tileMap.getType(bottomTile, rightTile);
-		topLeft = tl == Tile.BLOCKED;
-		topRight = tr == Tile.BLOCKED;
-		bottomLeft = bl == Tile.BLOCKED;
-		bottomRight = br == Tile.BLOCKED;
 	}
 	
 	public void checkTileMapCollision() {

@@ -13,8 +13,7 @@ public class Player extends MapObject{
 	//Firing
 	//private boolean firing;
 
-	public Player(TileMap tm) {
-		super(tm);
+	public Player() {
 		//player size
 		width = 10;
 		height = 10;
@@ -86,13 +85,11 @@ public class Player extends MapObject{
 	}
 	
 	public void update() {
-		getNextPosition();
-		checkTileMapCollision();
-		setPosition(xtemp, ytemp);
+		
 	}
 	
 	public void draw(Graphics2D g) {
-		setMapPosition();
+	
 		g.setColor(Color.MAGENTA);
 		g.fillRect((int)(x+xmap-width/2), (int)(y+ymap-height/2), width, height);//Draws player
 		g.setColor(Color.BLUE);

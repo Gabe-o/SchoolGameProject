@@ -20,10 +20,8 @@ public class Level1State extends GameState {
 	}
 
 	public void init() {
-		tileMap = new TileMap(30);
-		tileMap.loadTiles("/grasstileset.gif");
-		tileMap.loadMap("/level1-1.map");
-		tileMap.setPosition(0,  0);
+		tileMap = new TileMap("/Level1Map.png");
+		tileMap.LoadLevel();
 		
 		bg = new Background("/ArenaFloor.jpg");
 		
@@ -33,16 +31,16 @@ public class Level1State extends GameState {
 
 	public void update() {
 		player.update();
-		tileMap.setPosition(GamePanel.WIDTH / 2 - player.getx(), GamePanel.HEIGHT / 2 - player.gety());
 	}
 
 	public void draw(java.awt.Graphics2D g) {
+		
 		//draw bg
 		bg.draw(g);
 		
 		//draw tilemap
 		tileMap.draw(g);
-		
+				
 		//draw player
 		player.draw(g);
 	}

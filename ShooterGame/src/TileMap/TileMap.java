@@ -23,7 +23,7 @@ public class TileMap {
 	
 	private ArrayList<Integer> xmap = new ArrayList<Integer>();
 	private ArrayList<Integer> ymap = new ArrayList<Integer>();
-	
+	private int blocks = 0;
 	
 	public TileMap(String path) {
 		try {
@@ -34,23 +34,12 @@ public class TileMap {
 		}
 	}
 	
-	public void LoadLevel(String path) {
-		
-		try {
-			image = ImageIO.read(getClass().getResource(path));
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
-		
+	public void LoadLevel() {
 		int w = image.getWidth();
 		int h = image.getHeight();
 		
-		System.out.println(w+", "+h);
-		
 		for(int xx = 0;xx < w;xx++) {
 			for(int yy = 0;yy < h;yy++) {
-				System.out.println(xx+", "+yy);
 				int pixel = image.getRGB(xx, yy);
 				int red = (pixel >> 16) & 0xff;
 				int green = (pixel >> 8) & 0xff;
@@ -59,9 +48,21 @@ public class TileMap {
 				if(red == 0 && green == 0 && blue == 0) {
 					xmap.add(xx);
 					ymap.add(yy);
+					blocks++;
 				}
 			}
 		}
+	}
+	public int getBlocks() {
+		return blocks;
+	}
+	
+	public int getXMap(int i) {
+		return xmap.get(i)*4;
+	}
+	
+	public int getYMap(int i) {
+		return ymap.get(i)*4;
 	}
 	
 	public int getx() {
@@ -78,13 +79,9 @@ public class TileMap {
 	}
 	
 	public void draw(Graphics2D g) {
-		System.out.println("asd");
-		for(int x:xmap) {
-			for(int y:ymap) {
-				System.out.println("asd "+x+", "+y);
-				g.setColor(Color.BLUE);
-				g.fillRect(x*4, y*4, 4, 4);
-			}
+		for(int c = 0;c < xmap.size();c++) {
+				g.setColor(Color.BLACK);
+				g.fillRect(xmap.get(c)*4, ymap.get(c)*4, 4, 4);
 		}
 		
 	}

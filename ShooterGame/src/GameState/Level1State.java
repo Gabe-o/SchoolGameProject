@@ -8,7 +8,7 @@ import TileMap.*;
 
 public class Level1State extends GameState {
 
-	private TileMap tileMap = new TileMap("/Level1Map.png");
+	private TileMap tileMap;
 	private Background bg;//background
 	
 	private Player player;
@@ -20,16 +20,17 @@ public class Level1State extends GameState {
 	}
 
 	public void init() {
-		tileMap.LoadLevel("/Level1Map.png");
+		tileMap = new TileMap("/Level1Map.png");
+		tileMap.LoadLevel();
 		
 		bg = new Background("/ArenaFloor.jpg");
 		
-		//player = new Player();
-		//player.setPosition(100, 100);
+		player = new Player(tileMap);
+		player.setPosition(100, 100);
 	}
 
 	public void update() {
-		//player.update();
+		player.update();
 	}
 
 	public void draw(java.awt.Graphics2D g) {
@@ -41,7 +42,7 @@ public class Level1State extends GameState {
 		tileMap.draw(g);
 				
 		//draw player
-		//player.draw(g);
+		player.draw(g);
 	}
 
 	public void keyPressed(int k) {

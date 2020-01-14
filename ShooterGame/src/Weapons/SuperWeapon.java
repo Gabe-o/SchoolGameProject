@@ -6,3 +6,4 @@ public class SuperWeapon {
 	public int damage;
 	
 }
+ 

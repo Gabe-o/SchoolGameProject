@@ -13,3 +13,4 @@ public class Game {
 		frame.setVisible(true);//makes window visible
 	}
 }
+ 

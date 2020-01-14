@@ -7,3 +7,4 @@ public class Weapon_Shotgun extends SuperWeapon{
 		damage = 25;
 	}
 }
+ 

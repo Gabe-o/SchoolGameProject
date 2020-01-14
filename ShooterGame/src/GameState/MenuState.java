@@ -72,7 +72,7 @@ public class MenuState extends GameState{
 		}
 		if (currentChoice == 2) {
 			System.exit(0);
-		}
+		} 
 	}
 	
 	public void keyPressed(int k) {

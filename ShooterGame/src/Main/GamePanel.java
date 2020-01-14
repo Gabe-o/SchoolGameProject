@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
+import Entity.Controller;
 import GameState.GameStateManager;
 
 @SuppressWarnings("serial")
@@ -15,6 +16,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	public static final int WIDTH = 640;
 	public static final int HEIGHT = 480;
 	public static final int SCALE = 2;
+	public static long delta;
 	
 	//game thread
 	private Thread thread;
@@ -26,17 +28,17 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	private BufferedImage image;
 	private Graphics2D g;
 	
-	//game state manager
 	
+	//game state manager
 	private GameStateManager gsm;
 	
 	public GamePanel( ) {
 		super();
 		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 		setFocusable(true);
-		requestFocus();
+		requestFocus(); 
 	}
-	
+	 
 	public void addNotify() {
 		super.addNotify();
 		if(thread == null) {
@@ -52,6 +54,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		running = true;
 		
 		gsm = new GameStateManager();
+		
 	}
 	
 	public void run() {
@@ -86,10 +89,12 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	
 	private void update() {
 		gsm.update();
+		//c.tick();
 	}
 	
 	private void draw() {
 		gsm.draw(g);
+		//c.render(g);
 	}
 	
 	private void drawToScreen() {
@@ -105,6 +110,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	public void keyPressed(KeyEvent key) {
 		gsm.keyPressed(key.getKeyCode());
 	}
+	
 	
 	public void keyReleased(KeyEvent key) {
 		gsm.keyReleased(key.getKeyCode());

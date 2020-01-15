@@ -29,7 +29,7 @@ public ShopState(GameStateManager gsm) {
 		
 		try {
 			bg = new Background("/shopbg.jpg");
-		} 
+		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}

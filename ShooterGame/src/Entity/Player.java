@@ -3,7 +3,6 @@ package Entity;
 import TileMap.*;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class Player extends MapObject{
 	
@@ -11,29 +10,27 @@ public class Player extends MapObject{
 	private int health;
 	public boolean dead;
 	
-	
 	//Firing
 	//private boolean firing;
 
 	public Player(TileMap tm) {
 		super(tm);
-		
 		//player size
-		width = 10;
-		height = 10; 
+		width = 8;
+		height = 8;
 		
-		//player collision size 
-		cwidth = 11;
-		cheight = 11;
+		//player collision size
+		cwidth = 8;
+		cheight = 8;
 		
 		//speed
-		moveSpeed = 3;//acceleration
-		maxSpeed = 3;
-		stopSpeed = 3;//deceleration
+		moveSpeed = 4;//acceleration
+		maxSpeed = 4;
+		stopSpeed = 4;//deceleration
 		
 		health = 100;
-		System.out.println("HI");
 	}
+	
 	public int getHealth() {return health;}
 
 	
@@ -41,7 +38,7 @@ public class Player extends MapObject{
 		firing = true;
 	}*/
 
-	private  void getNextPosition() {
+	private void getNextPosition() {
 		if(left) {
 			dx-=moveSpeed;
 			if (dx < -maxSpeed) {//accelerate to max
@@ -89,23 +86,16 @@ public class Player extends MapObject{
 		}
 	}
 	
-	
-	
 	public void update() {
 		getNextPosition();
-
-		checkTileMapCollision();
-		setPosition(xtemp, ytemp);
-       }
-	
-
-	  
+		checkCollision();
+		setPosition(x + dx, y + dy);
+	}
 	
 	public void draw(Graphics2D g) {
-		setMapPosition();
 		g.setColor(Color.MAGENTA);
-		g.fillRect((int)(x+xmap-width/2), (int)(y+ymap-height/2), width, height);//Draws player
+		g.fillRect((int)(x-width/2), (int)(y-height/2), width, height);//Draws player
 		g.setColor(Color.BLUE);
-		g.drawRect((int)(x+xmap-cwidth/2), (int)(y+ymap-cheight/2), width, height);//Draws player
+		g.drawRect((int)(x-cwidth/2), (int)(y-cheight/2), width, height);//Draws player
 	}
 }

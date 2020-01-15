@@ -7,4 +7,3 @@ public class Weapon_Sniper extends SuperWeapon {
 		damage = 50;
 	}
 }
- 

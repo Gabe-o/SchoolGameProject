@@ -47,6 +47,11 @@ public class Controller {
 		}
 	}
 	
+	
+	public LinkedList<Bullet> getBullets(){
+		return b;
+	}
+	
 	public void addBullet(Bullet block) {
 		b.add(block);
 	}

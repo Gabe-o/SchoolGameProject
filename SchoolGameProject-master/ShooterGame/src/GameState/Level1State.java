@@ -33,9 +33,9 @@ public class Level1State extends GameState {
 		
 		player = new Player(tileMap);
 		player.setPosition(100, 100);
-		c.addEnemy(new Enemy (20, 20, player, tileMap));
-		c.addEnemy(new Enemy (600, 100, player, tileMap));
-		c.addEnemy(new Enemy (100, 300, player, tileMap));
+		c.addEnemy(new Enemy (20, 20, player, tileMap, c));
+		c.addEnemy(new Enemy (600, 100, player, tileMap, c));
+		c.addEnemy(new Enemy (100, 300, player, tileMap, c));
 	
 	}
 
@@ -63,6 +63,7 @@ public class Level1State extends GameState {
 		if(k == KeyEvent.VK_D) player.setRight(true);
 		if(k == KeyEvent.VK_W) player.setUp(true);
 		if(k == KeyEvent.VK_S) player.setDown(true);
+
 		
 		if(k == KeyEvent.VK_LEFT && (System.currentTimeMillis() - lastShotTime >= 100)) {//100 is rate of fire
 			direction = 1;

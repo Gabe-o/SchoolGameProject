@@ -2,6 +2,7 @@ package GameState;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.util.Random;
@@ -10,7 +11,7 @@ import Entity.Bullet;
 import Entity.Controller;
 import Entity.Enemy;
 import Entity.Player;
-import Main.GamePanel;
+
 import Sounds.SoundClipTest;
 import TileMap.*;
 
@@ -25,9 +26,9 @@ public class Level1State extends GameState {
 	Random r = new Random();
 	Enemy e ;
 	
-	private static int enemyCount = 1;
+	private int enemyCount = 1;
 	private int enemyKilled = 0;
-	public static  int wave = 0;
+	public static int wave = 0;
 	
 	public Level1State(GameStateManager gsm) {//constructor for menu takes in the current game state
 		
@@ -70,14 +71,11 @@ public class Level1State extends GameState {
 		player.update();
 		c.tick();
 		
-		if (enemyKilled > enemyCount) {
-			enemyCount+=1;
-			enemyKilled=0;
+		if (c.getEnemys().size()==0) {
 			wave++;
-			createEnemy(enemyCount);
+			createEnemy(wave);
 		}
-		if (Player.getHealth() <= 0) {
-			
+		if (Player.getHealth() <= 0) {	
 			gsm.setState(GameStateManager.GAMEOVERSTATE);
 		}
 	}
@@ -166,4 +164,6 @@ public class Level1State extends GameState {
 		if(k == KeyEvent.VK_LEFT) player.stopFiring();
 		if(k == KeyEvent.VK_RIGHT) player.stopFiring();
 	}
+
+
 }

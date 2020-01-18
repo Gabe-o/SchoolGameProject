@@ -60,7 +60,7 @@ public class Enemy extends MapObject {
 			if (enemyRectangle.getBounds().intersects(player.getRectangle().getBounds())) {
 					killEnemy();
 					Player.health -=10;
-					game.setEnemyKilled(game.getEnemyKilled() +1);
+					break;
 				
 				}
 			}

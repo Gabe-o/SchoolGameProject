@@ -30,7 +30,7 @@ import Entity.MapObject;
 	         this.y=y; 
 	         this.direction = direction;
 	         this.bulletSpeed = 5;
-	         bullet = new Rectangle(x,y,20,20);
+	         bullet = new Rectangle(x,y,5,5);
 	         
 	    }
 	    
@@ -52,6 +52,7 @@ import Entity.MapObject;
                 break;
         }
 	    	bullet.setLocation(x, y);
+	    	
 	    
 	    }
 	    
@@ -70,7 +71,7 @@ import Entity.MapObject;
 	    	g.setColor(Color.WHITE);
 	    	g.fillRect(x, y, 5, 5);
 	    	
-	    	g.drawRect((int)bullet.getX(), (int)bullet.getY(), 20, 20);
+	 
 	    }
 	  
 

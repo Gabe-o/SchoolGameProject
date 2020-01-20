@@ -48,6 +48,7 @@ public class GameStateManager {
 		if(currentState == 2) {
 			Player.displayHealthBar(g);
 			Player.updateScore(g);
+			Level1State.UI(g); //sets UI of game
 		}
 	}
 	

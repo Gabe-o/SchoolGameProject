@@ -14,7 +14,7 @@ public class GameOverState extends GameState{
 	private Background bg;//Background
 
 	private int currentChoice = 0;//current option selected
-	private String[] options = {"Try Again?", "Quit"};//menu options
+	private String[] options = {"CONTINUE", "Quit"};//menu options
 
 	private Color titleColor;//title color
 	private Font titleFont;//title font
@@ -27,12 +27,12 @@ public class GameOverState extends GameState{
 
 		try {
 
-			bg = new Background("/ArenaFloor.jpg");
-
+		
+		
 			titleColor = new Color(255, 0, 0);
-			titleFont = new Font ("Century Gothic", Font.PLAIN, 56);
+			titleFont = new Font ("Century Gothic", Font.BOLD, 56);
 
-			font = new Font ("Arial", Font.PLAIN, 24);
+			font = new Font ("Arial", Font.BOLD, 24);
 
 		}
 		catch(Exception e) {
@@ -46,29 +46,29 @@ public class GameOverState extends GameState{
 	public void draw(Graphics2D g) {
 
 		//draw bg
-		bg.draw(g);
+		
 
 		//draw title
 		g.setColor(titleColor);
 		g.setFont(titleFont);
-		g.drawString("Game Over", GamePanel.WIDTH/2-75, GamePanel.HEIGHT/4);
+		g.drawString("Game Over", GamePanel.WIDTH/2-150, GamePanel.HEIGHT/4);
 
 		//draw menu options
 		g.setFont(font);
 		for (int i = 0; i < options.length;i++) {
 			if (i == currentChoice) {
-				g.setColor(Color.WHITE);
+				g.setColor(Color.YELLOW);
 			}
 			else {
 				g.setColor(Color.RED);
 			}
-			g.drawString(options[i], GamePanel.WIDTH/2-28, 160 + i * 30);
+			g.drawString(options[i], GamePanel.WIDTH/2-50, 160 + i * 30);
 		}
 	}
 
 	private void select() {
 		if (currentChoice == 0) {
-			gsm.setState(GameStateManager.LEVEL1STATE);
+			gsm.setState(GameStateManager.MENUSTATE);
 		
 		}
 		

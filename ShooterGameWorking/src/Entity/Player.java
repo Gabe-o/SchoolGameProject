@@ -4,19 +4,24 @@ import TileMap.*;
 
 import java.awt.*;
 
+import GameState.Level1State;
+
 public class Player extends MapObject{
 	
 	//Player stats
-	private static int health;
-	private static String score;
+	public static int health;
+	public static int score;
 	public boolean dead;
-
+	Rectangle playerRectangle;
+	Level1State game;
+	public static int gold;
 	
 	//Firing
 		public static boolean firing;
 
-	public Player(TileMap tm) {
+	public Player(TileMap tm, Level1State game) {
 		super(tm);
+		this.game = game;
 		//player size
 		width = 8;
 		height = 8;
@@ -30,30 +35,43 @@ public class Player extends MapObject{
 		maxSpeed = 4;
 		stopSpeed = 4;//deceleration
 		
-		health = 100;
-		score = "0";
+		health=100;
+		score = 0;
+		gold = 0;
+		playerRectangle = new Rectangle ((int) x, (int) y, 8, 8);
 	}
 	
-	public static int getHealth() {return health;}
-
+	public static int getHealth() {
+		System.out.println(health);
+		return health;
+		}
+	
 	
 	public static void displayHealthBar(Graphics2D g) {
 	     g.setColor(Color.RED);
 		 g.fillRect(495, 15, 100, 20);
 		 g.setColor(Color.GREEN);
 		 g.fillRect(495, 15, health, 20);	
+		 g.setColor(Color.black);
+		 g.drawString(Integer.toString(health), 530, 35);
+		 
 		}
+	
 	
 		public static void updateScore(Graphics2D g){
 			
 			Font font1 = new Font("bold", Font.BOLD, 30);
-			int realScore = Integer.parseInt(score);
-			realScore++;
-			health--;
-			score = String.valueOf(realScore);
+	
 			g.setColor(Color.WHITE);
 			g.setFont(font1);
-			g.drawString(score, 530, 65);
+			g.drawString(Integer.toString(score), 530, 65);
+		
+		}
+	
+		
+		public int getScore() {
+			return score;
+			
 		}
 
 	private void getNextPosition() {
@@ -102,6 +120,7 @@ public class Player extends MapObject{
 				if (dy > 0) dy = 0;
 			} 
 		}
+		playerRectangle.setLocation((int)x, (int)y);
 	}
 	
 	public void setFiring() {
@@ -115,6 +134,7 @@ public class Player extends MapObject{
 		getNextPosition();
 		checkCollision();
 		setPosition(x + dx, y + dy);
+		
 	}
 	
 	public void draw(Graphics2D g) {

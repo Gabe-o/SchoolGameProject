@@ -2,6 +2,9 @@ package Entity;
 
 import java.awt.Graphics;
 import java.util.LinkedList;
+import java.util.Random;
+
+import TileMap.TileMap;
 
 
 
@@ -13,13 +16,15 @@ public class Controller {
 	
 	Bullet TempBullet;
 	Enemy TempEnemy;
-	
+	Random r = new Random();
 
 	
 	public Controller() {
 		
 	
 	}
+	
+	
 
 	public void tick() {
 		for (int i=0; i<b.size();i++) {
@@ -50,6 +55,9 @@ public class Controller {
 	
 	public LinkedList<Bullet> getBullets(){
 		return b;
+	}
+	public LinkedList<Enemy> getEnemys(){
+		return e;
 	}
 	
 	public void addBullet(Bullet block) {
